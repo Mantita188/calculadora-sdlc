@@ -8,7 +8,8 @@ while True:
     print("d) Dividir")
     print("e) Potencia (^)")
     print("f) Porcentaje (%)") 
-    print("g) Salir") 
+    print("h) Limpiar Memoria")
+    print("i) Salir")
     opcion = input("Elige la operación que quiere realizar a continuacion: ").lower()
     print("--------------------------------")
 
@@ -24,7 +25,7 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a sumar: ")
                 numero = float(numero_str)
                 total_suma = total_suma + numero
-            print(f"\n>> El resultado de la suma es: {total_suma}")
+            print(f"El resultado de la suma es: {total_suma}")
             memoria = total_suma
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -47,7 +48,7 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a restar: ")
                 numero = float(numero_str)
                 total_resta = total_resta - numero
-            print(f" El resultado de la resta es: {total_resta}")
+            print(f"El resultado de la resta es: {total_resta}")
             memoria = total_resta
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -122,7 +123,6 @@ while True:
             
             print(f" El resultado de {base} elevado a {exponente} es: {resultado}")
             memoria = resultado
-
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
@@ -137,20 +137,23 @@ while True:
                     total = float(input("Ingresa el número total para calcularle el porcentaje: "))
             else:
                 total = float(input("Ingresa el número total para calcularle el porcentaje: "))
-
             porcentaje = float(input(f"Ingresa el porcentaje que deseas calcular de {total} (ej: 15 para 15%): "))
             
             resultado = (total * porcentaje) / 100
             
             print(f"El {porcentaje}% de {total} es: {resultado}")
             memoria = resultado
-
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
-    elif opcion == 'g':
+    elif opcion == 'h':
+        memoria = 0
+        print("La memoria ha sido limpiada.")
+
+    elif opcion == 'i':
         print("¡Hasta luego!")
         break
         
     else:
         print("Opción no válida. Por favor, elige una de las opciones.")
+
