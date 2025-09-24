@@ -6,8 +6,9 @@ while True:
     print("b) Restar") 
     print("c) Multiplicar") 
     print("d) Dividir")
-    print("e) Potencia (^)") # <-- Nueva opción
-    print("f) Salir") # <-- Opción de salir movida
+    print("e) Potencia (^)")
+    print("f) Porcentaje (%)") 
+    print("g) Salir") 
     opcion = input("Elige la operación que quiere realizar a continuacion: ").lower()
     print("--------------------------------")
 
@@ -46,11 +47,10 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a restar: ")
                 numero = float(numero_str)
                 total_resta = total_resta - numero
-            print(f"\n>> El resultado de la resta es: {total_resta}")
+            print(f" El resultado de la resta es: {total_resta}")
             memoria = total_resta
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
-
 
     elif opcion == 'c':
         total_multiplicacion = 1
@@ -70,7 +70,7 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a multiplicar: ")
                 numero = float(numero_str)
                 total_multiplicacion = total_multiplicacion * numero 
-            print(f">> El resultado de la multiplicación es: {total_multiplicacion}")
+            print(f"El resultado de la multiplicación es: {total_multiplicacion}")
             memoria = total_multiplicacion
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -125,9 +125,32 @@ while True:
 
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
-    
-    elif opcion == 'f': 
+
+    elif opcion == 'f':
+        try:
+            total = 0
+            if memoria != 0:
+                usar_memoria = input(f"¿Quieres calcular el porcentaje del número en memoria ({memoria})? (si/no): ").lower()
+                if usar_memoria == 'si':
+                    total = memoria
+                else:
+                    total = float(input("Ingresa el número total para calcularle el porcentaje: "))
+            else:
+                total = float(input("Ingresa el número total para calcularle el porcentaje: "))
+
+            porcentaje = float(input(f"Ingresa el porcentaje que deseas calcular de {total} (ej: 15 para 15%): "))
+            
+            resultado = (total * porcentaje) / 100
+            
+            print(f"El {porcentaje}% de {total} es: {resultado}")
+            memoria = resultado
+
+        except ValueError:
+            print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
+
+    elif opcion == 'g':
         print("¡Hasta luego!")
         break
+        
     else:
         print("Opción no válida. Por favor, elige una de las opciones.")
