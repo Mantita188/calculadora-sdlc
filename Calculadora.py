@@ -1,11 +1,11 @@
 #Proyecto creacion de una calculadora :D
 memoria = 0 #Creada para que la calculadora pueda guardar los resultados de las operaciones y poder reutilizarlas.
 while True: 
-    print("Menú de la Calculadora: ")
+    print("Menú de la Calculadora:")
     print("a) Sumar")
     print("b) Restar") 
-    print("c) Multiplicar")
-    print("d) Dividir (próximamente)") 
+    print("c) Multiplicar") 
+    print("d) Dividir") 
     print("e) Salir")
     opcion = input("Elige la operación que quiere realizar a continuacion: ").lower()
     print("--------------------------------")
@@ -27,7 +27,7 @@ while True:
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
-    elif opcion == 'b': 
+    elif opcion == 'b':
         total_resta = 0
         try:
             if memoria != 0:
@@ -45,12 +45,13 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a restar: ")
                 numero = float(numero_str)
                 total_resta = total_resta - numero
-            print(f"El resultado de la resta es: {total_resta}")
+            print(f"\n>> El resultado de la resta es: {total_resta}")
             memoria = total_resta
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
-    elif opcion == 'c': 
+
+    elif opcion == 'c':
         total_multiplicacion = 1
         try:
             if memoria != 0:
@@ -68,15 +69,52 @@ while True:
             for i in range(cantidad_numeros):
                 numero_str = input(f"Ingresa el número {i + 1} a multiplicar: ")
                 numero = float(numero_str)
-                total_multiplicacion = total_multiplicacion * numero
+                total_multiplicacion = total_multiplicacion * numero 
 
-            print(f"El resultado de la multiplicación es: {total_multiplicacion}")
+            print(f">> El resultado de la multiplicación es: {total_multiplicacion}")
             memoria = total_multiplicacion
+        except ValueError:
+            print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
+    
+
+    elif opcion == 'd':
+        total_division = 0
+        try:
+            if memoria != 0:
+                usar_memoria = input(f"¿Quieres empezar a dividir desde el número {memoria}? (si/no): ").lower()
+                if usar_memoria == 'si':
+                    total_division = memoria 
+                else:
+                    primer_numero_str = input("Ingresa el dividendo (número a dividir): ")
+                    total_division = float(primer_numero_str)
+            else:
+                primer_numero_str = input("Ingresa el dividendo (número a dividir): ")
+                total_division = float(primer_numero_str)
+            
+            cantidad_numeros = int(input("¿Por cuántos números quieres dividir?: "))
+            
+            operacion_cancelada = False
+
+            for i in range(cantidad_numeros):
+                numero_str = input(f"Ingresa el divisor {i + 1}: ")
+                numero = float(numero_str)
+                
+                if numero == 0:
+                    print("Error: No se puede dividir por cero. Operación cancelada.")
+                    operacion_cancelada = True
+                    break 
+                
+                total_division = total_division / numero
+            if not operacion_cancelada:
+                 print(f">> El resultado de la división es: {total_division}")
+                 memoria = total_division
+
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
     elif opcion == 'e':
         print("¡Hasta luego!")
         break
+
     else:
-        print("Opción no válida. Por favor, elige 'a', 'b', 'c' o 'e'.")
+        print("Opción no válida. Por favor, elige una de las opciones.")
