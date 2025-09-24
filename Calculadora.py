@@ -5,8 +5,11 @@ while True:
     print("a) Sumar")
     print("b) Restar") 
     print("c) Multiplicar") 
-    print("d) Dividir") 
-    print("e) Salir")
+    print("d) Dividir")
+    print("e) Potencia (^)")
+    print("f) Porcentaje (%)") 
+    print("h) Limpiar Memoria")
+    print("i) Salir")
     opcion = input("Elige la operación que quiere realizar a continuacion: ").lower()
     print("--------------------------------")
 
@@ -22,7 +25,7 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a sumar: ")
                 numero = float(numero_str)
                 total_suma = total_suma + numero
-            print(f"\n>> El resultado de la suma es: {total_suma}")
+            print(f"El resultado de la suma es: {total_suma}")
             memoria = total_suma
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -45,11 +48,10 @@ while True:
                 numero_str = input(f"Ingresa el número {i + 1} a restar: ")
                 numero = float(numero_str)
                 total_resta = total_resta - numero
-            print(f"\n>> El resultado de la resta es: {total_resta}")
+            print(f"El resultado de la resta es: {total_resta}")
             memoria = total_resta
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
-
 
     elif opcion == 'c':
         total_multiplicacion = 1
@@ -64,19 +66,16 @@ while True:
             else:
                 primer_numero_str = input("Ingresa el primer número para multiplicar: ")
                 total_multiplicacion = float(primer_numero_str)
-
             cantidad_numeros = int(input("¿Cuántos números más quieres multiplicar?: "))
             for i in range(cantidad_numeros):
                 numero_str = input(f"Ingresa el número {i + 1} a multiplicar: ")
                 numero = float(numero_str)
                 total_multiplicacion = total_multiplicacion * numero 
-
-            print(f">> El resultado de la multiplicación es: {total_multiplicacion}")
+            print(f"El resultado de la multiplicación es: {total_multiplicacion}")
             memoria = total_multiplicacion
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
     
-
     elif opcion == 'd':
         total_division = 0
         try:
@@ -90,31 +89,62 @@ while True:
             else:
                 primer_numero_str = input("Ingresa el dividendo (número a dividir): ")
                 total_division = float(primer_numero_str)
-            
             cantidad_numeros = int(input("¿Por cuántos números quieres dividir?: "))
-            
             operacion_cancelada = False
-
             for i in range(cantidad_numeros):
                 numero_str = input(f"Ingresa el divisor {i + 1}: ")
                 numero = float(numero_str)
-                
                 if numero == 0:
                     print("Error: No se puede dividir por cero. Operación cancelada.")
                     operacion_cancelada = True
                     break 
-                
                 total_division = total_division / numero
             if not operacion_cancelada:
-                 print(f">> El resultado de la división es: {total_division}")
+                 print(f"El resultado de la división es: {total_division}")
                  memoria = total_division
-
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
     elif opcion == 'e':
-        print("¡Hasta luego!")
-        break
+        try:
+            base = 0
+            if memoria != 0:
+                usar_memoria = input(f"¿Quieres usar el número en memoria ({memoria}) como base? (si/no): ").lower()
+                if usar_memoria == 'si':
+                    base = memoria
+                else:
+                    base = float(input("Ingresa el número base: "))
+            else:
+                base = float(input("Ingresa el número base: "))           
+            exponente = float(input("Ingresa el exponente: "))            
+            resultado = base ** exponente            
+            print(f"El resultado de {base} elevado a {exponente} es: {resultado}")
+            memoria = resultado
+        except ValueError:
+            print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
+    elif opcion == 'f':
+        try:
+            total = 0
+            if memoria != 0:
+                usar_memoria = input(f"¿Quieres calcular el porcentaje del número en memoria ({memoria})? (si/no): ").lower()
+                if usar_memoria == 'si':
+                    total = memoria
+                else:
+                    total = float(input("Ingresa el número total para calcularle el porcentaje: "))
+            else:
+                total = float(input("Ingresa el número total para calcularle el porcentaje: "))
+            porcentaje = float(input(f"Ingresa el porcentaje que deseas calcular de {total} (ej: 15 para 15%): "))          
+            resultado = (total * porcentaje) / 100            
+            print(f"El {porcentaje}% de {total} es: {resultado}")
+            memoria = resultado
+        except ValueError:
+            print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
+    elif opcion == 'h':
+        memoria = 0
+        print("La memoria ha sido limpiada.")
+    elif opcion == 'i':
+        print("¡Hasta luego!")
+        break        
     else:
         print("Opción no válida. Por favor, elige una de las opciones.")
