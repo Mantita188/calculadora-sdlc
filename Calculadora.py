@@ -1,39 +1,34 @@
 #Proyecto creacion de una calculadora :D
 memoria = 0 #Creada para que la calculadora pueda guardar los resultados de las operaciones y poder reutilizarlas.
-while True:
-    print("Menú de la Calculadora:")
+while True: 
+    print("Menú de la Calculadora: ")
     print("a) Sumar")
-    print("b) Restar")
-    print("c) Multiplicar (proximamente)")
-    print("d) Dividir (proximamente)")
+    print("b) Restar") 
+    print("c) Multiplicar")
+    print("d) Dividir (próximamente)") 
     print("e) Salir")
     opcion = input("Elige la operación que quiere realizar a continuacion: ").lower()
     print("--------------------------------")
 
-    if opcion == 'a':
+    if opcion == 'a': 
         total_suma = 0
-
         if memoria != 0:
             usar_memoria = input(f"¿Quieres empezar la suma con el número {memoria}? (si/no): ").lower()
             if usar_memoria == 'si':
                 total_suma = memoria
-
         try:
             cantidad_numeros = int(input("¿Cuántos números quieres sumar?: "))
             for i in range(cantidad_numeros):
                 numero_str = input(f"Ingresa el número {i + 1} a sumar: ")
                 numero = float(numero_str)
                 total_suma = total_suma + numero
-
-            print(f" El resultado de la suma es: {total_suma}")
+            print(f"\n>> El resultado de la suma es: {total_suma}")
             memoria = total_suma
-
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
-    elif opcion == 'b':
+    elif opcion == 'b': 
         total_resta = 0
-
         try:
             if memoria != 0:
                 usar_memoria = input(f"¿Quieres empezar a restar desde el número {memoria}? (si/no): ").lower()
@@ -45,16 +40,38 @@ while True:
             else:
                 primer_numero_str = input("Ingresa el número inicial: ")
                 total_resta = float(primer_numero_str)
-
             cantidad_numeros = int(input("¿Cuántos números quieres restar?: "))
             for i in range(cantidad_numeros):
                 numero_str = input(f"Ingresa el número {i + 1} a restar: ")
                 numero = float(numero_str)
-                total_resta = total_resta - numero 
-
+                total_resta = total_resta - numero
             print(f"El resultado de la resta es: {total_resta}")
-            memoria = total_resta 
+            memoria = total_resta
+        except ValueError:
+            print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
+    elif opcion == 'c': 
+        total_multiplicacion = 1
+        try:
+            if memoria != 0:
+                usar_memoria = input(f"¿Quieres empezar a multiplicar desde el número {memoria}? (si/no): ").lower()
+                if usar_memoria == 'si':
+                    total_multiplicacion = memoria
+                else:
+                    primer_numero_str = input("Ingresa el primer número para multiplicar: ")
+                    total_multiplicacion = float(primer_numero_str)
+            else:
+                primer_numero_str = input("Ingresa el primer número para multiplicar: ")
+                total_multiplicacion = float(primer_numero_str)
+
+            cantidad_numeros = int(input("¿Cuántos números más quieres multiplicar?: "))
+            for i in range(cantidad_numeros):
+                numero_str = input(f"Ingresa el número {i + 1} a multiplicar: ")
+                numero = float(numero_str)
+                total_multiplicacion = total_multiplicacion * numero
+
+            print(f"El resultado de la multiplicación es: {total_multiplicacion}")
+            memoria = total_multiplicacion
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
 
@@ -62,4 +79,4 @@ while True:
         print("¡Hasta luego!")
         break
     else:
-        print("Opción no válida. Por favor, elige 'a', 'b' o 'e'.")
+        print("Opción no válida. Por favor, elige 'a', 'b', 'c' o 'e'.")
