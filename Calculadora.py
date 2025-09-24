@@ -100,7 +100,7 @@ while True:
                     break 
                 total_division = total_division / numero
             if not operacion_cancelada:
-                 print(f"El resultado de la división es: {total_division}")
+                 print(f">> El resultado de la división es: {total_division}")
                  memoria = total_division
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -115,10 +115,13 @@ while True:
                 else:
                     base = float(input("Ingresa el número base: "))
             else:
-                base = float(input("Ingresa el número base: "))           
-            exponente = float(input("Ingresa el exponente: "))            
-            resultado = base ** exponente            
-            print(f"El resultado de {base} elevado a {exponente} es: {resultado}")
+                base = float(input("Ingresa el número base: "))
+            
+            exponente = float(input("Ingresa el exponente: "))
+            
+            resultado = base ** exponente
+            
+            print(f" El resultado de {base} elevado a {exponente} es: {resultado}")
             memoria = resultado
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
@@ -134,17 +137,23 @@ while True:
                     total = float(input("Ingresa el número total para calcularle el porcentaje: "))
             else:
                 total = float(input("Ingresa el número total para calcularle el porcentaje: "))
-            porcentaje = float(input(f"Ingresa el porcentaje que deseas calcular de {total} (ej: 15 para 15%): "))          
-            resultado = (total * porcentaje) / 100            
+            porcentaje = float(input(f"Ingresa el porcentaje que deseas calcular de {total} (ej: 15 para 15%): "))
+            
+            resultado = (total * porcentaje) / 100
+            
             print(f"El {porcentaje}% de {total} es: {resultado}")
             memoria = resultado
         except ValueError:
             print("Error: Ingresaste un valor no numérico. Intenta de nuevo.")
+
     elif opcion == 'h':
         memoria = 0
         print("La memoria ha sido limpiada.")
+
     elif opcion == 'i':
         print("¡Hasta luego!")
-        break        
+        break
+        
     else:
         print("Opción no válida. Por favor, elige una de las opciones.")
+
